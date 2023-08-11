@@ -3,7 +3,6 @@ import {} from "../index.css";
 import { db } from "../googleSignin/config";
 import { addDoc, collection, getDocs } from "firebase/firestore";
 import Popup from "reactjs-popup";
-import LineChartComponent from "./LineChart";
 
 function Home() {
   const [selectedValueSys, setSelectedValueSys] = useState(120);
@@ -14,13 +13,16 @@ function Home() {
 
   const fetchMeasures = async () => {
     await getDocs(collection(db, "masuratori")).then((querySnapshot) => {
-      const newData = querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+      const newData = querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id, creation_date: new Date(doc.data()["createdAt"]["seconds"] * 1000) }));
       setMeasures(newData);
     });
   };
   useEffect(() => {
     fetchMeasures();
   }, []);
+
+  measures.sort((a, b) => a.creation_date - b.creation_date);
+  console.log(measures);
 
   const handleChangeSys = (event) => {
     setSelectedValueSys(event.target.value);
@@ -62,7 +64,7 @@ function Home() {
   const types = ["Aparat", "Ceas"];
 
   return (
-    <div>
+    <div class="bg-gradient-to-r from-red-500">
       <div className="flex flex-col justify-center items-center py-20 px-20 space-y-10 md:space-y-0 md:flex-row md:space-x-20">
         <div className="flex items-center shadow-lg rounded-lg p-3.5 w-full bg-blue-400 md:w-1/4">
           <h2 className="block text-white font-normal text-xl dark:text-white pr-3">Sys</h2>
@@ -118,8 +120,9 @@ function Home() {
           </button>
         </div>
       </div>
-      <div className="graphs">
-        <LineChartComponent data={measures} />
+      <div className="flex flex-col justify-center items-center">
+        <h1>grafice</h1>
+        <h1>grafice</h1>
       </div>
     </div>
   );
