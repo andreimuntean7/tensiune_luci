@@ -27,9 +27,9 @@ function Home() {
   useEffect(() => {
     checkAllowedUsers();
     fetchMeasures();
-  }, []);
+  });
 
-  measures.sort((a, b) => a.creation_date - b.creation_date);
+  measures.sort((a, b) => b.creation_date - a.creation_date);
 
   const handleChangeSys = (event) => {
     setSelectedValueSys(event.target.value);
@@ -45,7 +45,7 @@ function Home() {
   };
 
   const numberOptions = [];
-  for (let i = 1; i <= 200; i++) {
+  for (let i = 40; i <= 200; i++) {
     numberOptions.push(
       <option key={i} value={i}>
         {i}
