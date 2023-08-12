@@ -4,13 +4,13 @@ import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyC-UtN-d8yZAFmmKFNnUWNB9bIY4Z6u3No",
-  authDomain: "tensiune-d054b.firebaseapp.com",
-  projectId: "tensiune-d054b",
-  storageBucket: "tensiune-d054b.appspot.com",
-  messagingSenderId: "65758789848",
-  appId: "1:65758789848:web:074ca879eccfd90c1ad7ad",
-  measurementId: "G-MJVDNH30NG",
+  apiKey: "AIzaSyBGXaMftCmwHc0kco4Y_qthswSpQQSOefo",
+  authDomain: "tensiune-luci.firebaseapp.com",
+  projectId: "tensiune-luci",
+  storageBucket: "tensiune-luci.appspot.com",
+  messagingSenderId: "704635852761",
+  appId: "1:704635852761:web:9de92af2e8c0ee194fabc8",
+  measurementId: "G-H6K4MB6GCP",
 };
 
 // Initialize Firebase

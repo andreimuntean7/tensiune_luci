@@ -27,7 +27,7 @@ function Home() {
   useEffect(() => {
     checkAllowedUsers();
     fetchMeasures();
-  });
+  }, []);
 
   measures.sort((a, b) => a.creation_date - b.creation_date);
 
@@ -74,7 +74,7 @@ function Home() {
       <div className=" flex items-center justify-center bg-slate-600 text-white">
         <Heart isClick={isClick} onClick={() => setClick(!isClick)} />
         <h2>
-          Salut, <b className="font-bold text-xl text-green-200 italic">{localStorage.getItem("displayName")}</b>
+          <b className="font-bold text-xl text-green-200 italic">{localStorage.getItem("displayName")}</b>
         </h2>
       </div>
       <div className="flex flex-col justify-center items-center py-20 px-20 space-y-10 md:space-y-0 md:flex-row md:space-x-20">
@@ -132,13 +132,13 @@ function Home() {
           </button>
         </div>
       </div>
-      <div className="p-10">
+      <div className="p-2">
         <div className="w-full">
-          <h1 className="text-4xl font-extrabold dark:text-white">Aparat</h1>
+          <h1 className="text-4xl font-extrabold dark:text-white py-5 px-5 bg-gray-700 text-white">Aparat</h1>
           <Table data={measures} filter="Aparat" />
         </div>
-        <div className="w-full">
-          <h1 className="text-4xl font-extrabold dark:text-white">Ceas</h1>
+        <div className="w-full py-5">
+          <h1 className="text-4xl font-extrabold dark:text-white py-5 px-5 bg-gray-700  text-white">Ceas</h1>
           <Table data={measures} filter="Ceas" />
         </div>
       </div>
