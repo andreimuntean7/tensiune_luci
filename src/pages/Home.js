@@ -19,6 +19,7 @@ function Home() {
     await getDocs(collection(db, "masuratori")).then((querySnapshot) => {
       const newData = querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id, creation_date: new Date(doc.data()["createdAt"]["seconds"] * 1000) }));
       setMeasures(newData);
+      console.log("working...");
     });
   };
   const checkAllowedUsers = () => {
@@ -27,7 +28,7 @@ function Home() {
   useEffect(() => {
     checkAllowedUsers();
     fetchMeasures();
-  });
+  }, []);
 
   measures.sort((a, b) => b.creation_date - a.creation_date);
 
