@@ -42,8 +42,6 @@ function Graph({ measures, filter }) {
     })
     .filter((formattedDate) => formattedDate !== null);
 
-  console.log(labels);
-
   const dia = m.map((measure) => measure.type === filter && measure.dia);
   const sys = m.map((measure) => measure.type === filter && measure.sys);
   const pulse = m.map((measure) => measure.type === filter && measure.pulse);

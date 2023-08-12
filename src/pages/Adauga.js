@@ -3,12 +3,14 @@ import {} from "../index.css";
 import { db } from "../googleSignin/config";
 import { addDoc, collection } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import { format, parseISO } from "date-fns";
 
 function Adauga() {
   const [selectedValueSys, setSelectedValueSys] = useState(120);
   const [selectedValueDia, setSelectedValueDia] = useState(80);
   const [selectedValuePulse, setSelectedValuePulse] = useState(65);
   const [selectedValueType, setSelectedValueType] = useState("Aparat");
+  const [datetime, setDatetime] = useState("");
 
   const handleChangeSys = (event) => {
     setSelectedValueSys(event.target.value);
@@ -37,7 +39,7 @@ function Adauga() {
   const addValues = async (e) => {
     e.preventDefault();
     await addDoc(collection(db, "masuratori"), {
-      createdAt: new Date(),
+      createdAt: parseISO(datetime),
       createdBy: localStorage.getItem("email"),
       sys: selectedValueSys,
       dia: selectedValueDia,
@@ -69,6 +71,19 @@ function Adauga() {
       </div>
       <div className="flex flex-col items-center gap-3 w-full px-10">
         <div className="flex items-center shadow-2xl p-3 rounded-md w-full bg-slate-500 md:w-1/4">
+          <h2 className="block text-white font-normal text-xl dark:text-white pr-3 w-1/3">Data</h2>
+          <input
+            className="hadow-lg bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-2/3 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            type="datetime-local"
+            value={(datetime || "").toString().substring(0, 16)}
+            onChange={(ev) => {
+              if (!ev.target["validity"].valid) return;
+              const dt = ev.target["value"] + ":00";
+              setDatetime(dt);
+            }}
+          />
+        </div>
+        <div className="flex items-center shadow-2xl p-3 rounded-md w-full bg-slate-500 md:w-1/4">
           <h2 className="block text-white font-normal text-xl dark:text-white pr-3 w-1/3">Sys</h2>
           <select
             className="shadow-lg bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-2/3 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -91,7 +106,7 @@ function Adauga() {
           </select>
         </div>
         <div className="flex items-center shadow-2xl p-3 rounded-md w-full bg-slate-500 md:w-1/4">
-          <h2 className="block text-white font-normal text-xl dark:text-white pr-3 w-1/3">Pulse</h2>
+          <h2 className="block text-white font-normal text-xl dark:text-white pr-3 w-1/3">Puls</h2>
           <select
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg ocus:ring-blue-500 focus:border-blue-500 block w-2/3 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             value={selectedValuePulse}
