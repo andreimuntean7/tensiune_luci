@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import {} from "../index.css";
 import { db } from "../googleSignin/config";
-import { addDoc, collection, getDocs } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import Table from "../components/Table.js";
 import Heart from "react-animated-heart";
 import { useNavigate } from "react-router-dom";
+import Graph from "../components/Graph.js";
 
 function Home() {
   const allowedUsers = ["andreimuntean0795@gmail.com", "munteanadrianalaura@gmail.com"];
@@ -51,10 +52,12 @@ function Home() {
         <div className="w-full">
           <h1 className="text-4xl font-extrabold dark:text-white py-5 px-5 bg-gray-700 text-white">Aparat</h1>
           <Table data={measures} filter="Aparat" />
+          <Graph measures={measures} filter="Aparat" />
         </div>
         <div className="w-full py-5">
           <h1 className="text-4xl font-extrabold dark:text-white py-5 px-5 bg-gray-700  text-white">Ceas</h1>
           <Table data={measures} filter="Ceas" />
+          <Graph measures={measures} filter="Ceas" />
         </div>
       </div>
     </div>
