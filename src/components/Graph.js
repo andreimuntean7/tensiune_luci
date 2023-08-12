@@ -61,7 +61,7 @@ function Graph({ measures, filter }) {
         backgroundColor: "rgba(53, 162, 235, 0.5)",
       },
       {
-        label: "Sys",
+        label: "Puls",
         data: pulse,
         borderColor: "rgb(255, 102, 102)",
         backgroundColor: "rgba(255,102, 102, 0.5)",
