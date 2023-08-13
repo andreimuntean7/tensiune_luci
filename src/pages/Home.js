@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import Graph from "../components/Graph.js";
 
 function Home() {
-  const allowedUsers = ["andreimuntean0795@gmail.com", "munteanadrianalaura@gmail.com"];
+  const allowedUsers = ["andreimuntean0795@gmail.com", "munteanadrianalaura@gmail.com", "munteanlucianioan@gmail.com", "ciolanandreea90@gmail.com"];
   const [measures, setMeasures] = useState([]);
   const [isClick, setClick] = useState(false);
   const navigate = useNavigate();

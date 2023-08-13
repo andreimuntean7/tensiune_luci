@@ -3,7 +3,7 @@ import {} from "../index.css";
 import { db } from "../googleSignin/config";
 import { addDoc, collection } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
-import { format, parseISO } from "date-fns";
+import { parseISO } from "date-fns";
 
 function Adauga() {
   const [selectedValueSys, setSelectedValueSys] = useState(120);

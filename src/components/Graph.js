@@ -24,6 +24,7 @@ export const options = {
 };
 
 function Graph({ measures, filter }) {
+  measures.sort((a, b) => a.creation_date - b.creation_date);
   const m = measures
     .map((measure) => {
       if (measure.type === filter) {
