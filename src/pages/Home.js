@@ -51,13 +51,13 @@ function Home() {
       <div className="p-2">
         <div className="w-full">
           <h1 className="text-4xl font-extrabold dark:text-white py-5 px-5 bg-gray-700 text-white">Aparat</h1>
-          <Table data={measures} filter="Aparat" />
           <Graph measures={measures} filter="Aparat" />
+          <Table data={measures} filter="Aparat" />
         </div>
         <div className="w-full py-5">
           <h1 className="text-4xl font-extrabold dark:text-white py-5 px-5 bg-gray-700  text-white">Ceas</h1>
-          <Table data={measures} filter="Ceas" />
           <Graph measures={measures} filter="Ceas" />
+          <Table data={measures} filter="Ceas" />
         </div>
       </div>
     </div>
